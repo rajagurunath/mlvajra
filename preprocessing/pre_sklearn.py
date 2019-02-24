@@ -1,4 +1,3 @@
-
 from collections import namedtuple
 from sklearn.preprocessing import (Binarizer,FunctionTransformer,KBinsDiscretizer,
                                     KernelCenterer,LabelBinarizer,LabelEncoder,
@@ -45,17 +44,6 @@ Tabular.OrdinalEncoder=OrdinalEncoder
 Tabular.PolynomialFeatures=PolynomialFeatures
 Tabular.PowerTransformer=PowerTransformer
 Tabular.QuantileTransformer=QuantileTransformer
-
-
-
-
-
-
-
-import torch
-
-
-
 
 
 
