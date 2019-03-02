@@ -47,7 +47,8 @@ Disclaimer :
     I have Deployed few models in production (sklearn and keras models) and preprocessing was an essential step or pivotal step in Deployment .
 
     How we can handle the preprocessing in production ?
-- so far:
+    
+    - so far:
     -   we are have different system/place for preprocessing i.e we treat preprocessing as a separate system, and we will speak to it or trigger it based on Rest api or schedulers.
     -  we save the intermediate preprocessed output in separate 
     databases and take the preprocessed output from the database and run prediction on that data.
