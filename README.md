@@ -13,7 +13,7 @@ Disclaimer :
 
 ## components of mlvajra:
 - Data 
-- preprocess
+- preprocess 
 - model
     - model repository
 - evaluation
@@ -28,6 +28,9 @@ Disclaimer :
 - Experiment tracking
 - Deployment strategies
 - Microservices
+- Documentation
+- Test cases
+
 
 - Bonus (for Management people)
 ## Data :
