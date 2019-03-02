@@ -31,7 +31,8 @@ Disclaimer :
 
 - Bonus (for Management people)
 ## Data :
-     In this data layer ,plugins for connecting with different data sources are placed ranging from local csv,json ,parquet to Hadoop filesystems (orc,parquet,avro)
+     In this data layer ,plugins for connecting with different data sources are placed ranging from 
+     local csv,json ,parquet to Hadoop filesystems (orc,parquet,avro)
 
      Also reading from Different databases should be added here,ranging from sqlite ,ealsticsearch,hive ,iginite etc
      
@@ -47,14 +48,22 @@ Disclaimer :
     I have Deployed few models in production (sklearn and keras models) and preprocessing was an essential step or pivotal step in Deployment .
 
     How we can handle the preprocessing in production ?
+<<<<<<< HEAD
     
     - so far:
     -   we are have different system/place for preprocessing i.e we treat preprocessing as a separate system, and we will speak to it or trigger it based on Rest api or schedulers.
     -  we save the intermediate preprocessed output in separate 
     databases and take the preprocessed output from the database and run prediction on that data.
     - Is this a Bad practice ? no !!
+=======
+  - so far:
+      -   we are have different system/place for preprocessing i.e we treat preprocessing as a separate system, and we will speak to it         or trigger it based on Rest api or schedulers.
+      -  we save the intermediate preprocessed output in separate 
+      databases and take the preprocessed output from the database and run prediction on that data.
+      - Is this a Bad practice ? no !!
+>>>>>>> cca5aabf9d92eb17231da49c0c23e398fc857ffd
 
-    - (some people claim this has a efficient way of deployment since we can use the preprocessed data later.)
+      - (some people claim this has a efficient way of deployment since we can use the preprocessed data later.)
 
 ### Take away :
 -   Try to write a pipeline which consists of preprocessing ,feature Engineering and model prediction and deploy it as a single standlone service in Production .
@@ -72,8 +81,6 @@ Is this Pipeline possible for all frameworks, can we serialize ,deserialize the 
 ## Model
 
 -  Models can be built with any open source package - only catch was, the package should support pipelining with preprocessing step natively or we have to implement the pipeline.
-
-We all know 
 
 
 
