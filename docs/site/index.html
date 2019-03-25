@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>mlvajra</title>
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href=".">mlvajra</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#mlvajra">mlVajra</a></li>
+            <li><a href="#why-we-need-mlvajra">Why we need mlvajra?</a></li>
+            <li><a href="#components-of-mlvajra">components of mlvajra:</a></li>
+            <li><a href="#data">Data :</a></li>
+            <li><a href="#preprocess">preprocess :</a></li>
+            <li><a href="#model">Model</a></li>
+            <li><a href="#evalution">Evalution</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="mlvajra">mlVajra</h1>
+<p>A framework or best practices to develop end to end machine learning pipeline (also has some tips for ML-management people )</p>
+<h3 id="why-we-need-mlvajra">Why we need mlvajra?</h3>
+<ul>
+<li>There was no standard Design patterns exists for reasearching fields like Machine learning</li>
+</ul>
+<p>Disclaimer :
+- For past few months I have been spending my time reading different Design patterns (The take way was simple - Layer to Layer comunication should happen without depending on the underlying technology stack.
+  - for example : Data layer should abstract the underlying databases)</p>
+<ul>
+<li>I am not an expert in this space still learning (for more than 2.5 years) so take this guidelines with pinch of salt and I am open to change any principles discussed here if it has some drawback.</li>
+</ul>
+<h2 id="components-of-mlvajra">components of mlvajra:</h2>
+<ul>
+<li>Data </li>
+<li>preprocess </li>
+<li>model<ul>
+<li>model repository</li>
+</ul>
+</li>
+<li>evaluation</li>
+<li>visualization<ul>
+<li>Dashboarding</li>
+<li>Monitoring </li>
+</ul>
+</li>
+<li>explanations</li>
+<li>schedulers</li>
+<li>Active learning <ul>
+<li>modAL</li>
+</ul>
+</li>
+<li>serving<ul>
+<li>tf serving</li>
+</ul>
+</li>
+<li>Experiment tracking</li>
+<li>Deployment strategies</li>
+<li>Microservices<ul>
+<li>clipper.ai</li>
+</ul>
+</li>
+<li>Documentation<ul>
+<li>mkdocs</li>
+</ul>
+</li>
+<li>
+<p>Test cases</p>
+<ul>
+<li>doc test</li>
+<li>pytest</li>
+</ul>
+</li>
+<li>
+<p>Bonus (for Management people)</p>
+</li>
+</ul>
+<h2 id="data">Data :</h2>
+<pre><code> In this data layer ,plugins for connecting with different data sources are placed ranging from 
+ local csv,json ,parquet to Hadoop filesystems (orc,parquet,avro)
+
+ Also reading from Different databases should be added here,ranging from sqlite ,ealsticsearch,hive ,iginite etc
+
+ Also Streaming plugins will be helpful.
+ for training the data from Hadoop file system, a python package called *`petastorm`* may be useful
+
+ Above things should be written in Deployment percespective
+
+ For Experimenting :
+    see python-intake package to get the feel of how version/maintain/abstract data
+</code></pre>
+<h2 id="preprocess">preprocess :</h2>
+<pre><code>I have Deployed few models in production (sklearn and keras models) and preprocessing was an essential step or pivotal step in Deployment .
+
+How we can handle the preprocessing in production ?
+
+
+- so far:
+-   we are have different system/place for preprocessing i.e we treat preprocessing as a separate system, and we will speak to it or trigger it based on Rest api or schedulers.
+-  we save the intermediate preprocessed output in separate 
+databases and take the preprocessed output from the database and run prediction on that data.
+- Is this a Bad practice ? no !!
+
+  - (some people claim this has a efficient way of deployment since we can use the preprocessed data later.)
+</code></pre>
+<h3 id="take-away">Take away :</h3>
+<ul>
+<li>Try to write a pipeline which consists of preprocessing ,feature Engineering and model prediction and deploy it as a single standlone service in Production .</li>
+</ul>
+<h4 id="pros">pros:</h4>
+<pre><code>- Low Latency
+- No need of extra database to store intermediate data
+- workflow complexity will be reduced
+</code></pre>
+<h4 id="cons">cons :</h4>
+<ul>
+<li>yet to be identified</li>
+</ul>
+<p>Is this Pipeline possible for all frameworks, can we serialize ,deserialize the pipeline in all framework ??</p>
+<pre><code>mlvajra to rescue ....!
+</code></pre>
+<h2 id="model">Model</h2>
+<ul>
+<li>First mandatory rule was to retrain the model on the new data to preserver model
+freshness</li>
+<li>Models can be built with any open source package - only catch was, the package should support pipelining with preprocessing step natively or we have to implement the our own pipeline.</li>
+</ul>
+<h3 id="one-model-vs-model-repository">One model vs Model repository</h3>
+<p>To illustrate this further ,lets consider the case, where we trained the model and 
+productionized the model, The model was doing good, as days progress the incoming data
+distribuition changes and our model performance was slowly decreasing (losing freshness)</p>
+<p>To Avoid this we planned to train the model whenever we feel the model was not performing upto the 
+level. 
+- we have two options We use active learning (kind of online learning) startegy to implement 
+the retraining (i.e the same model was retrained with new data and serialized to the disk)</p>
+<ul>
+<li>In other hand we will train the old model with new data and compare the 
+model performance with pervious(old) model and deploy the best model according to our metrics (this is because sometimes our new model's performance was slightly lower than the old model) (we will maintain model repository)</li>
+</ul>
+<h3 id="which-one-is-best-startegy">which one is best startegy??</h3>
+<p>Thing to consider here , the new input data was hand annotated by the SME in their respective dashboards, now considering the our two cases which is the preferred startegy ?! when we retrain the model with hand annotated data if the trained model's performance was low, we will rollback to the
+previous model (if you notice here we will be losing valuable hand annotated data in this case)</p>
+<p>In future we are also planning to integerate with Active learning libraries like modAL </p>
+<p>so One vs Model repository has to be used carefully (without losing any data)</p>
+<h2 id="evalution">Evalution</h2>
+<p>Whenever we start with Data science project, we start with the scope of the 
+Data product which is some value add given to the customer.</p>
+<p>This scope should be effectively converted into a script which is useful to 
+evaluate our model in future (we will optimize our model for this metrics)</p>
+<p>For example :
+- keeping F1 score as standard for imbalanced class data
+- keeping Detection Time as a metric for Time series Anomaly detection</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-03-25 04:47:24
+-->
