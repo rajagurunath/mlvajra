@@ -1,11 +1,11 @@
 [build-system]
-requires = ["flit","spacy","dash","tensorflow"]
+requires = ["flit"]
 build-backend = "flit.buildapi"
 
 [tool.flit.metadata]
 module = "mlvajra"
-author = "Gurunath"
+author = "gurunath"
 author-email = "gurunathrajagopal@gmail.com"
-home-page = "https://github.com/rajagurunath"
+home-page = "https://github.com/rajagurunath/mlvajra"
 classifiers = ["License :: OSI Approved :: Apache Software License"]
 

@@ -1,6 +1,8 @@
 # mlVajra 
 A framework or best practices to develop end to end machine learning pipeline (also has some tips for ML-management people )
 
+Installation :
+`pip install mlvajra`
 ### Why we need mlvajra?
 - There was no standard Design patterns exists for reasearching fields like Machine learning
 
