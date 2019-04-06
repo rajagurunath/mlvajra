@@ -31,6 +31,7 @@ app.layout = html.Div([
 #    logo,
     html.H2("Annotator"),
     html.H4("converting unsupervised data into supervised dataset using Annotaion (weekly supervsion)"),
+    dcc.Tab(),
     dcc.Upload(
         id='upload-data',
         children=html.Div([
