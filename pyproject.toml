@@ -1,0 +1,11 @@
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "mlvajra"
+author = "Gurunath"
+author-email = "gurunathrajagopal@gmail.com"
+home-page = "https://github.com/rajagurunath"
+classifiers = ["License :: OSI Approved :: Apache Software License"]
+
