@@ -7,5 +7,8 @@ module = "mlvajra"
 author = "gurunath"
 author-email = "gurunathrajagopal@gmail.com"
 home-page = "https://github.com/rajagurunath/mlvajra"
-classifiers = ["License :: OSI Approved :: Apache Software License"]
+description-file="README.md"
 
+classifiers = ["License :: OSI Approved :: Apache Software License"]
+[tool.flit.metadata.urls]
+Documentation=https://rajagurunath.github.io/mlvajra/
