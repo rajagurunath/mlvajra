@@ -8,6 +8,6 @@ import mlvajra.evaluation
 import mlvajra.explanations
 import mlvajra.model
 import mlvajra.visualization
-import mlvajra,Annotation
+import mlvajra.Annotation
 __all__=['mlvajra','data','preprocessing','evaluation','explanations','model',
             'visualization','Annotation']
