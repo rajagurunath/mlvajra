@@ -28,6 +28,5 @@
 
 ![hidden dept in machine learning](IMG\hidden_technical_dept.png)
 
-
-![Hidden Technical Depts in Machine learning ](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems)
+https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems
 
