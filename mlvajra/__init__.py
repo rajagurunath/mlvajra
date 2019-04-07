@@ -1,5 +1,5 @@
 """A Last weapon to save Data scientist"""
-__version__='0.1.1'
+__version__='0.1.2'
 __name__='mlvajra'
 import mlvajra 
 import mlvajra.preprocessing 
