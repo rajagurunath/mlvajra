@@ -9,6 +9,8 @@ from modAL.disagreement import (consensus_entropy,consensus_entropy_sampling,
 from modAL.expected_error import expected_error_reduction
 from collections import namedtuple
 
+__all__=['learner','queryStrategy','consensus']
+
 learners=['ActiveLearner','Committee','CommitteeRegressor']
 queryStrategies=['classifier_entropy','classifier_margin', 
                 'classifier_uncertainty','uncertainty_sampling',
@@ -43,6 +45,5 @@ consensus.max_std_sampling=max_std_sampling
 consensus.vote_entropy=vote_entropy
 consensus.vote_entropy_sampling=vote_entropy_sampling
 
-__all__=['learner','queryStrategy','consensus']
 
 

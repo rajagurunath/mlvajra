@@ -9,7 +9,7 @@ except ImportError as e:
 from enum import IntEnum
 models= IntEnum('models', 'PYTHON PYTORCH PYSPARK TENSORFLOW')
 
-
+__all__=['mlDeploy']
 class mlDeploy(object):
     def __init__(self,**kwargs):
         self.conn = ClipperConnection(DockerContainerManager())
