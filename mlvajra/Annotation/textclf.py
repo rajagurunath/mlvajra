@@ -4,36 +4,38 @@ Created on Thu Jun 14 12:04:33 2018
 
 @author: gurunath.lv
 """
+try :
+    import base64
+    import datetime
+    import io
+    import dash
+    from dash.dependencies import Input, Output
+    import dash_core_components as dcc
+    import dash_html_components as html
+    import dash_table_experiments as dt
+    import  plotly.graph_objs as go
+    import numpy as np
+    import pandas as pd
+    import json
+    # from tf_universal_sent_emb import get_similar_records
+    # from spacy_text_classifier_cnn import train_cnn_for_given_label,predict
+    import glob
+    import os
+    # from custom_classifier import customKNN,ParagraphVectors
 
-import base64
-import datetime
-import io
-import dash
-from dash.dependencies import Input, Output
-import dash_core_components as dcc
-import dash_html_components as html
-import dash_table_experiments as dt
-import  plotly.graph_objs as go
-import numpy as np
-import pandas as pd
-import json
-# from tf_universal_sent_emb import get_similar_records
-# from spacy_text_classifier_cnn import train_cnn_for_given_label,predict
-import glob
-import os
-# from custom_classifier import customKNN,ParagraphVectors
+    # from dashboard import Dashboard
+    from flask import Flask
+    import flask
 
-# from dashboard import Dashboard
-from flask import Flask
-import flask
-
-#import glob
-from sklearn.pipeline import Pipeline
-import pickle
-from lime.lime_text import LimeTextExplainer
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.feature_extraction.text import TfidfVectorizer
-
+    #import glob
+    from sklearn.pipeline import Pipeline
+    import pickle
+    from lime.lime_text import LimeTextExplainer
+    from sklearn.metrics.pairwise import cosine_similarity
+    from sklearn.feature_extraction.text import TfidfVectorizer
+except ImportError as e:
+    print("some packages are not installed -to use this textclf Annotator \
+            ! please install relevant libraries",e)
 
 
 server = Flask(__name__)

@@ -1,13 +1,16 @@
-import dash
-from dash.dependencies import Input, Output
-import dash_core_components as dcc
-import dash_html_components as html
-import dash_table_experiments as dt
-import dash_table
-import  plotly.graph_objs as go
-from flask import Flask
-import flask
-import os
+try:
+    import dash
+    from dash.dependencies import Input, Output
+    import dash_core_components as dcc
+    import dash_html_components as html
+    import dash_table_experiments as dt
+    import dash_table
+    import  plotly.graph_objs as go
+    from flask import Flask
+    import flask
+    import os
+except ImportError as e:
+    print("some packages are not installed consider installing the packages",e)
 server = Flask(__name__)
 
 app=dash.Dash(name = __name__, server = server)
@@ -19,16 +22,11 @@ app.scripts.config.serve_locally = True
 
 app.config['suppress_callback_exceptions']=True
 
-def return_datable(df):
-    table=dash_table.DataTable(
-        id='table',
-        columns=[{"name": i, "id": i} for i in df.columns],
-        data=df.to_dict("rows"),
-    )
-    return table
+
 
 app.layout = html.Div([
 #    logo,
+    dash_table.DataTable(),
     html.H2("Annotator"),
     html.H4("converting unsupervised data into supervised dataset using Annotaion (weekly supervsion)"),
     dcc.Tab(),
@@ -59,7 +57,8 @@ app.layout = html.Div([
     
     html.Div(id='similar-docs'),
     html.Br(),
-    html.H3('Training dataset'),
+    html.Button('Save Dataset',id='save-dataset',),
+    #html.H3('Training dataset'),
     html.Div(id='output'),
 #     html.Button('Train',id='train-button'),
 #     html.Br(),
@@ -87,11 +86,3 @@ app.layout = html.Div([
 #        )
 #    ], className='row')
 ])
-app.css.append_css({
-    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
-})
-app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/brPBPO.css"})
-
-
-if __name__ == '__main__':
-    app.run_server(debug=True,port =8050)
