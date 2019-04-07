@@ -8,7 +8,7 @@ author = "gurunath"
 author-email = "gurunathrajagopal@gmail.com"
 home-page = "https://github.com/rajagurunath/mlvajra"
 description-file="README.md"
-
 classifiers = ["License :: OSI Approved :: Apache Software License"]
+
 [tool.flit.metadata.urls]
-Documentation=https://mlvajra.readthedocs.io/en/latest/ 
+Documentation="https://mlvajra.readthedocs.io/en/latest/"
