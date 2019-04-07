@@ -1,5 +1,6 @@
 [build-system]
-requires = ["flit"]
+requires = ["flit","modAL","clipper_admin","sklearn","dash","dash-daq",
+            "flask","plotly","pandas","numpy","lime"]
 build-backend = "flit.buildapi"
 
 [tool.flit.metadata]

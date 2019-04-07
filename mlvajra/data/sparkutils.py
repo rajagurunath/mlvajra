@@ -1,14 +1,16 @@
-
-from optimus import Optimus
-from pyspark.sql import DataFrame,SparkSession
-import configparser
-import os
-import logging
-import pygogo as gogo
-import sys
-import types
-from typing import Any
-from functools import reduce
+try:
+    from optimus import Optimus
+    from pyspark.sql import DataFrame,SparkSession
+    import configparser
+    import os
+    import logging
+    import pygogo as gogo
+    import sys
+    import types
+    from typing import Any
+    from functools import reduce
+except ImportError as e:
+    print("Some packages are not installed ",e)
 log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 formatter = logging.Formatter(log_format)
 
