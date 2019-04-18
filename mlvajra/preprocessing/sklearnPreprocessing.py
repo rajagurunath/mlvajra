@@ -18,6 +18,7 @@ from sklearn.feature_extraction.text import (CountVectorizer,
                                              TfidfTransformer,TfidfVectorizer,
                                              FeatureHasher,HashingVectorizer)
 
+
 class ParagraphVectors(BaseEstimator,TransformerMixin):
     """
     sklearn style transformer for DOC2vec as paragraphVectors
