@@ -159,4 +159,12 @@ nlp.TfidfTransformer=TfidfTransformer
 nlp.TfidfVectorizer=TfidfVectorizer
 nlp.ParagraphVectors=ParagraphVectors
 
+"""
+TODO:adding datetime features
+cyclic features
+lag features
+window features
+"""
+
 __all__=['Tabular','nlp']
+
