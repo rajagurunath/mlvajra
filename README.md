@@ -12,10 +12,6 @@ Installation :
 - Mlflow
 - Tensorflow serving
 
-### evalution:
-- sklearn metrics
-- pycm
-
 ### model-Training /distribuited
 - mlflow -generic classification metrics 
 - nnictl-automl -tensorflow /pytorch 

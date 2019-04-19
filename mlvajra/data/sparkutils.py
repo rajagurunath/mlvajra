@@ -28,7 +28,67 @@ class Utils(object):
                
         def writeData(self,df:DataFrame,path:str=None,**kargs)->None:
                 raise NotImplementedError
+
+class optimusJDBC(Utils):
+    __name__='optimusJDBC'
+    def __init__(self,config):
+        try :
+            import jaydebeapi
+        except ImportError:
+            raise Exception("jaydebeapi not installed")
+        self.config=config
+        self.logger = gogo.Gogo(
+                    'readWriteUtils.fmt',
+                    low_hdlr=gogo.handlers.file_hdlr('{}/{}.log'.format(self.config['LOGS']['path'],
+                                                                          self.__name__)),
+                    low_formatter=formatter,
+                    high_level='error',
+                    high_formatter=formatter).logger
+        self.conn=jaydebeapi.connect(self.config[self.__name__]['classname'],
+                    self.config[self.__name__]['jdbc_url'],
+                    [self.config[self.__name__]['username'],self.config[self.__name__]['password']],
+                    self.config[self.__name__]['jar_path'])
+    def readData(self,optimus,sql):
+        pdf=pd.read_sql(sql,self.conn)
+        sdf=optimus.spark.createDataFrame(pdf)
+        return sdf
     
+    def push_to_hive(self,df,tablename,columns):
+        
+        q1 = "INSERT INTO {} ".format(tablename) + str(tuple(columns)).replace("""'""", "") + " VALUES "
+
+        for ind, row in df.iterrows():
+            #print(q1)
+            tmp = str(tuple(row.values.tolist()))+','
+            q1+=tmp
+
+        q1 = q1[:-1]
+        #print(q1)
+        curr=self.conn.cursor()
+        curr.execute(q1)
+    def writeData(self,sdf,tablenames=None,columns=None):
+        pdf=sdf.toPandas()    
+        if not columns:
+            columns=self.config[self.__name__]['stg_columns'].split(',')
+        if not tablenames:
+            tablenames=self.config[self.__name__]['writetablename']
+        #pdf.to_sql(self.config[self.__name__]['writetablename'],self.conn,
+        #        schema=self.config[self.__name__]['writetablename'],
+         #       if_exists='append',index=False,index_label=None)
+        print(tablenames,columns)
+        if tablenames=='coeusapp.ml_performance_metrics_prestg': 
+            df=pd.DataFrame()
+            
+            df[columns]=pdf[columns]
+            df['module_part']=pdf['nodename']
+            columns=columns+['module_part']
+        else:
+            print('else')
+            df=pdf
+        for i in range(0,len(df),10000):
+            print(i)
+            tmp=df[i:i+10000]
+            self.push_to_hive(tmp,tablenames,columns) 
 class optimusCsvUtils(Utils):
         __name__='optimusCsvUtils'
         def __init__(self, config:configparser.ConfigParser)->None:
