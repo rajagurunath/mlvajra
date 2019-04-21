@@ -37,17 +37,32 @@ def stdAnnotation(df,features,alpha=3,label_column_name='std_label'):
     print('Class Count:',df[label_column_name].value_counts())
     return df
 
-def naAnnotation():
-    pass
+def naAnnotation(X):
+    return pd.isnull(X)
 
+def LocalOutlierFactorAnnotation(X,outliers_fraction=0.1,**kwargs):
+    lof=LocalOutlierFactor(
+        n_neighbors=35, contamination=outliers_fraction)
+    return lof.fit_predict(X)
+
+def OneClassSVMAnnotation(X,outliers_fraction=0.1,**kawargs):
+    osvm=OneClassSVM(nu=outliers_fraction, kernel="rbf",
+                                      gamma=0.1)
+    osvm.fit_predict(X)
 def kmeansAnnotation():
-    pass
+    km=KMeans()
+    return km.fit_predict(X)
 
-def isolationForestAnnotation():
-    pass
+def isolationForestAnnotation(X,outliers_fraction=0.1,**kwargs):
+    isoforest=IsolationForest(behaviour='new',
+                                         contamination=outliers_fraction,
+                                         random_state=42,**kwargs)
+    return isoforest.fit(X).predict(X)
 
-def EllipticEnvelopeAnnotation():
-    pass
+def EllipticEnvelopeAnnotation(X,outliers_fraction=0.1,**kwargs):
+    ee=EllipticEnvelope(contamination=outliers_fraction)
+    return ee.fit_predict(X)
+
 def activeLearningAnnotation():
     pass
 

@@ -4,8 +4,9 @@ Aim :
     To built robust depoyment pipeline strategies using Open source stack
     planning to add as many strategies in this repo pertaining to ML-deployment
 
-Installation :
-`pip install mlvajra` only installs mlvajra binaries
+## Installation :
+
+`pip install mlvajra` - only installs mlvajra binaries
 
 To install complete dependencies: (for time being)
 
@@ -18,6 +19,7 @@ virtualenv -p python3 vajra_env
 
 source vajra_env\bin\activate
 
+cd mlvajra
 Install all required dependencies from repo
 
 pip install -r requirements.txt
