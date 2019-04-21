@@ -19,7 +19,6 @@ finally:
 class Explain(object):
     def __init__(self,path:str,modelloader:Callable):
         self.modelloader=modelloader
-        self.model:ModelType.KERAS=self.modelloader(path)
     def explain(self,exptype):
         pass
     def applytransform(self,):
@@ -66,10 +65,11 @@ class ShapExp(Explain):
         for instance in array:
             shap_values = self.explainer.shap_values(instance, nsamples=50)
             shap_list.append(np.mean(np.array(shap_values),axis=0))
-        return [columns]*len(shap_list),np.array(shap_list)
+        return [self.config['columns']]*len(shap_list),np.array(shap_list)
 
 
 
-if __name__=='__main__':
-    she=ShapExp(CONFIG)
-    s,a=she.explain(X.iloc[:10].values)
+# if __name__=='__main__':
+#     CONFIG={}
+#     she=ShapExp(CONFIG)
+#     #s,a=she.explain(X.iloc[:10].values)

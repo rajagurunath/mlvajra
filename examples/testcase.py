@@ -6,7 +6,7 @@ The example module supplies one function, factorial().  For example,
 >>> factorial(5)
 120
 """
-from mlvajra.preprocessing.sklearnPreprocessing import Tabular
+#from mlvajra.preprocessing.sklearnPreprocessing import Tabular
 #from mlvajra.preprocessing.sklearnPreprocessing import *
 def factorial(n):
     """Return the factorial of n, an exact integer >= 0.
