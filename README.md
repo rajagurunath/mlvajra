@@ -5,7 +5,24 @@ Aim :
     planning to add as many strategies in this repo pertaining to ML-deployment
 
 Installation :
-`pip install mlvajra`
+`pip install mlvajra` only installs mlvajra binaries
+
+To install complete dependencies: (for time being)
+
+git clone https://github.com/rajagurunath/mlvajra.git
+
+```
+create virtualenv
+
+virtualenv -p python3 vajra_env
+
+source vajra_env\bin\activate
+
+Install all required dependencies from repo
+
+pip install -r requirements.txt
+
+```
 
 ## TODO list
 ### Deploy
@@ -13,7 +30,7 @@ Installation :
 - Tensorflow serving
 
 ### model-Training /distribuited
-- mlflow -generic classification metrics 
+- mlflow -generic classification metrics (done)
 - nnictl-automl -tensorflow /pytorch 
 
 ### Feature Engineering
@@ -21,7 +38,7 @@ Installation :
 - pyspark-Flint
 
 ### preprocessing
-- cyclic features
+- cyclic features (done)
 - lag features
 - window features
 
