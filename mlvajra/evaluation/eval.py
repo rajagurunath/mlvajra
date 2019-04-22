@@ -1,8 +1,10 @@
-import matplotlib.pyplot as plt
-from pycm import ConfusionMatrix,Compare
-import sklearn.metrics as metrics
-from collections import namedtuple
-
+try:
+    import matplotlib.pyplot as plt
+    from pycm import ConfusionMatrix,Compare
+    import sklearn.metrics as metrics
+    from collections import namedtuple
+except ImportError as e:
+    print("few packages are not installed - {}".format(e))
 __all__=['classification_metrics','regression_metrics']
 
 clf_metrics=['ConfusionMatrix','Compare']

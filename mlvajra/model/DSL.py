@@ -2719,8 +2719,10 @@ The second plot has the same structure of the first one, but the axes are flippe
 
 
 """
-from ludwig import LudwigModel
-
+try:
+    from ludwig import LudwigModel
+except ImportError as e:
+    print("packages are not installed - {}".format(e))
 
 
 
