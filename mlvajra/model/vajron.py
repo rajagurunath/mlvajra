@@ -1,10 +1,13 @@
 from ..evaluation import classification_metrics,regression_metrics
-from mlflow import (create_experiment, set_experiment, run,ActiveRun ,
-                    log_metric, log_param, set_tag, log_artifacts, log_artifact,
-                    active_run, start_run ,end_run, get_artifact_uri )
+try:
+    from mlflow import (create_experiment, set_experiment, run,ActiveRun ,
+                        log_metric, log_param, set_tag, log_artifacts, log_artifact,
+                        active_run, start_run ,end_run, get_artifact_uri )
 
+except ImportError as e:
+    print("packages are not installed - {}".format(e))
 
-
+"""
 class mlflowFillMissingUDF(Preprocessing):
     __name__="mlflowFillMissingUDF"
     def __init__(self,config,sklearnTransformer):
@@ -49,7 +52,7 @@ class mlflowFillMissingUDF(Preprocessing):
 
     def apply_train(self,df):
         """
-        call preprocessing_during_train
+    #    call preprocessing_during_train
         """
         artifacts = {
         "scalar_path":"{}/{}_scalar_dict.pkl".format(self.DIRself.__name__) ,
@@ -66,7 +69,7 @@ class mlflowFillMissingUDF(Preprocessing):
 
     def apply_test(self,df,op):
         """
-        expected order nodeid,section,module,ts,BerPreFecMax,PhaseCorrectionAve,PmdMin,Qmin,SoPmdAve
+   #     expected order nodeid,section,module,ts,BerPreFecMax,PhaseCorrectionAve,PmdMin,Qmin,SoPmdAve
         """
         df.createTempView('temp')
         df=op.spark.sql("select nodeid,section,module,ts,BerPreFecMax,PhaseCorrectionAve,PmdMin,Qmin,SoPmdAve from temp")
@@ -88,4 +91,4 @@ class mlflowFillMissingUDF(Preprocessing):
         # TODO:april_test=op.spark.sql("select nodeid,section,module,ts,BerPreFecMax,PhaseCorrectionAve,PmdMin,Qmin,SoPmdAve from temp")
         return df, #pre_actual_df
 
-
+"""

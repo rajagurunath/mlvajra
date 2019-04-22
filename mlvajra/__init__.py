@@ -1,5 +1,5 @@
 """A Last weapon to save Data scientist"""
-__version__='0.1.4.1'
+__version__='0.1.4.2'
 __name__='mlvajra'
 import mlvajra 
 from mlvajra import preprocessing
@@ -14,4 +14,3 @@ from mlvajra import deploy
 from mlvajra import experiment
 __all__=['mlvajra','data','preprocessing','evaluation','explanations','model',
             'visualization','Annotation','experiment','activelearning']
-            
