@@ -51,9 +51,9 @@ class mlflowFillMissingUDF(Preprocessing):
 
 
     def apply_train(self,df):
-        """
+        "
     #    call preprocessing_during_train
-        """
+        "
         artifacts = {
         "scalar_path":"{}/{}_scalar_dict.pkl".format(self.DIRself.__name__) ,
         "columns_path":"{}/{}_columns.pkl".format(self.DIR,self.__name__),
@@ -68,9 +68,9 @@ class mlflowFillMissingUDF(Preprocessing):
         return df
 
     def apply_test(self,df,op):
-        """
+        "
    #     expected order nodeid,section,module,ts,BerPreFecMax,PhaseCorrectionAve,PmdMin,Qmin,SoPmdAve
-        """
+        "
         df.createTempView('temp')
         df=op.spark.sql("select nodeid,section,module,ts,BerPreFecMax,PhaseCorrectionAve,PmdMin,Qmin,SoPmdAve from temp")
         
