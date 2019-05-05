@@ -28,7 +28,7 @@ pip install -r requirements.txt
 ```
 ## Goal of mlvajra:
 - Easily set your infrastructure /deployment in client machines
-- No need to write glue code everytime to deploy ML models in production (Lets have a unifying Deployment strategy)  glue codes so far -Archana ,coeus,century-link
+- No need to write glue code everytime to deploy ML models in production (Lets have a unifying Deployment strategy) 
 - start your Experiment from the day one (over ambitious here)
     should have a common format for every model (framework agnostic) to deploy and devops cycle.
     your path to Research to production should as easiest & earliest as possible
