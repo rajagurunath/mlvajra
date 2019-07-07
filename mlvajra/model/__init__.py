@@ -1,5 +1,8 @@
 """
 model building using torch,tensorflow,spark,sklearn
 """
-from mlvajra.model.DSL import LudwigModel
+try:
+    from mlvajra.model.DSL import LudwigModel
+except ImportError as e:
+    print(e)
 from mlvajra.model.vajron import *

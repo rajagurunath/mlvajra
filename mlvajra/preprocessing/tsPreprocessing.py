@@ -33,7 +33,8 @@ def listify(p=None, q=None):
     assert len(p)==n, f'List len mismatch ({len(p)} vs {n})'
     return list(p)
 
-__all__ = ['add_datepart', 'cont_cat_split', 'Categorify', 'FillMissing', 'FillStrategy', 'Normalize', 'TabularProc',
+__all__ = ['add_datepart', 'cont_cat_split', 'Categorify', 'FillMissing', 
+            'FillStrategy', 'Normalize', 'TabularProc',
            'add_elapsed_times', 'make_date', 'add_cyclic_datepart']
 
 def make_date(df:DataFrame, date_field:str):
@@ -196,9 +197,9 @@ class FillMissing(TabularProc):
                     df[name+'_na'] = pd.isnull(df[name])
                     if name+'_na' not in self.cat_names: self.cat_names.append(name+'_na')
                 if self.fill_strategy == FillStrategy.MEDIAN: filler = df[name].median()
-                elif self.fill_strategy == FillStrategy.CONSTANT: filler = self.fill_val
+                elif self.fill_strategy == FillStrategy.CONSTANT: filler = self.fill_Val
                 else: filler = df[name].dropna().value_counts().idxmax()
-                df[name] = df[name].fillna(filler)
+                df[name] = df[name].fillna(filler)  
                 self.na_dict[name] = filler
 
     def apply_test(self, df:DataFrame):
