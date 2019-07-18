@@ -1,6 +1,8 @@
 # mlVajra 
 A framework or best practices to develop end to end machine learning pipeline ,use it as a standlone library or use some strategies listed here to use in your usecases.
 
+For Additional Details : https://rajagurunath.github.io/mlvajra/
+
 ## Aim :
     To built robust depoyment pipeline strategies using Open source stack
     planning to add as many strategies in this repo pertaining to ML-deployment
