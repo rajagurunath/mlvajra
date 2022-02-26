@@ -41,7 +41,7 @@ kubernetes==9.0.0
 MarkupSafe==1.1.1
 matplotlib==3.0.3
 mleap==0.8.1
-mlflow==0.9.0.1
+mlflow==1.23.1
 mlvajra==0.1.3.0
 modAL==0.3.4
 networkx==2.3
